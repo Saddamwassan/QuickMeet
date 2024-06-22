@@ -1,0 +1,104 @@
+:root{
+    --border:1px solid #CCCED1;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: sans-serif;
+}
+/* profile pic uploading  */
+
+input[type="file"]{
+display: none;
+}
+.profilelabel{
+    color:#007BFF;
+    text-decoration: underline;
+}
+.profilelabel:hover{
+    color:#0777ed;
+}
+.profile{
+    padding:100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    width:500px;
+    margin: auto;
+}
+.profile h1{
+    padding:20px 0;
+    width: 100%;
+}
+.profilepic{
+    border-radius: 50%;
+    width:145px;
+}
+.profilelink{
+    color:#088ae7;
+    text-decoration: none;
+    font-size:15px;
+}
+.username{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    padding:10px 0;
+}
+.username label{
+    font-weight: bold;
+}
+select option:checked{
+    background-color: grey;
+    
+}
+.input{
+    padding:10px;
+    width:100%;
+    margin-top:5px;
+    border-radius: 4px;
+    border:var(--border);
+    outline-color:rgb(87, 124, 199);
+    outline-width:thick;
+}
+.username label{
+    font-size:14px;
+}
+.username .password{
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    border:var(--border);
+    outline-color:rgb(87, 124, 199);
+    outline-width:thick;
+    margin-top:5px;
+
+}
+.passwordinput{
+    padding:10px;
+    width:90%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+.savebtn{
+    padding:10px;
+    background-color: rgb(0, 123, 255);
+    color:white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba( 0, 0, 0, 0.1);
+}
+.eyeicon{
+    color:grey;
+}
+@media(max-height:768px) and (min-height:425px){
+    .profile{
+        width: 320px;
+    }
+    .profilepic{
+        width: 130px;
+    }
+}

@@ -1,0 +1,105 @@
+:root{
+    --border:1px solid #CCCED1;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+thead tr{
+    background-color: #0149AA;
+}
+.myschedule h3{
+    width: 730px;
+    padding: 30px 0;
+    font-size: 25px;
+    text-align: left;
+    margin: auto;
+}
+.tablerow{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width:730px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+.tablerow tr{
+    border-bottom: var(--border);
+}
+tbody tr:hover{
+    background-color: rgb(250, 248, 248);
+}
+.tablerow th{
+    color:white;
+    padding:15px 0;
+
+}
+.tablerow td{
+    padding:25px 0;
+    text-align: center;
+}
+.myschedule{
+    margin:80px 0;
+    width:80%;
+    margin-inline: auto;
+    min-height: 75vh;
+}
+.day{
+    font-weight: bold;
+}
+.meetingtype,.with{
+    color:rgb(0, 102, 255);
+}
+.tablerow .status{
+    display: flex;
+    justify-content: center;
+}
+.statusbtn{
+    background-color: green;
+    color: white;
+    border-radius: 3px;
+    padding: 4px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+.actioncancel{
+    color:#DC3545;
+    margin-right:5px;
+    font-size: 14px;
+}
+.actioncancel:hover{
+    color:#b42d3b;
+    margin-right:5px;
+}
+.actionreschedule{
+    color:#007BFF;
+    font-size: 14px;
+
+}
+.actionreschedule:hover{
+    color:#076edc;
+}
+
+@media(max-width:768px){
+    .myschedule{
+        overflow-x: scroll;
+    }
+}
+@media (max-width: 500px) and (min-width: 425px) {
+        .nav a {
+            font-size: 13px;
+        }
+    }
+@media (max-width: 424px){
+        h3{
+            font-size:20px;
+        }
+        .tablerow th,td{
+            font-size:14px;
+        }
+        .statusbtn{
+            padding: 1px 5px;
+            font-size: 14px;
+        }
+    }

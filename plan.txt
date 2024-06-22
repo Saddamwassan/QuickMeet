@@ -1,0 +1,12 @@
+Theme: White 60%, 30%, 10%
+Dashboard{
+    Navbar ,
+    Profile,
+    logout,
+    body,
+    footer,
+}
+booking cards 
+my schedule
+
+

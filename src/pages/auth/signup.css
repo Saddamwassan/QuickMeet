@@ -1,0 +1,207 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+  } 
+  form .rowdiv{
+    display:flex;
+    width:100%;
+    flex-direction: column;
+  }
+  form p{
+    text-align:left;
+    color:red;
+  }
+  .logologin{
+    width:170px;
+    margin-bottom: 15px;
+  }
+  .password{
+    /* padding:10px; */
+    border-radius: 4px;
+    border: 2px solid grey;
+    text-decoration:black;
+    width:100%;
+  }
+  /* signup page  */
+  .SignUpDiv{
+    display:flex;
+    line-height:40px;
+    align-items: center;
+    justify-content:center;
+  }
+  .signupinner{
+    margin-top:20px;
+    display:flex;
+    align-items: center;
+    box-shadow:0 0 10px rgba(0 , 0, 0, 0.1);
+    border-radius:12px;
+    background-color: white;
+    margin:30px;
+  }
+  /* form div from Auth ------------------- */
+  .formdiv{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+  }
+  .signbtn{
+    border-radius:8px;
+  }
+  /* form  */
+  .signupform{
+    display: flex;
+    flex-direction: column;
+    padding:15px;
+    justify-content: center;
+    align-items: center;
+  }
+  .image{
+    border-radius:12px 0 0 12px;
+    height:825px;
+    width:400px;
+  }
+  /* Signup heading */
+  h1{
+    text-align:center;
+  }
+  /* welcome text */
+  .welcometxt{
+    text-align: center;
+    color:black;
+  }
+  .signUpWithGoogle{
+    width:100%;
+    padding:12px;
+    background-color: white;
+    border-radius: 4px;
+    border: 2px solid grey;
+    cursor:pointer;
+    margin-top: 5px;
+    outline:none;
+  }
+  .signUpWithGoogle:hover{
+    background-color:rgb(3, 121, 224);
+    color:white;
+  }
+  .signUpWithGoogle:active{
+    background-color:rgb(3, 121, 224);
+    color:white;
+    outline:5px solid  rgb(224, 218, 185);
+
+  }
+  .hrdiv{
+    margin-top:10px;
+    position:relative;
+    height:40px;
+    width:100%;
+  }
+  .hrdiv .hr{
+    width:100%;
+    position:absolute;
+    border-bottom:2px solid grey;
+    top:50%;
+    left:0;
+  }
+  .hrtext{
+    background-color:white;
+    position:absolute;
+    transform:translateX(-50%);
+    left:50%;
+    width:40px;
+    height:30px;
+    text-align: center;
+  }
+  form input{
+    padding:10px;
+    border-radius: 4px;
+    border: 2px solid grey;
+    text-decoration:black;
+    width:100%;
+  }
+  .Labeldiv{
+    width:100%;
+  }
+  .namediv{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+  }
+  .firstnamediv{
+    display:flex;
+    flex-direction:column;
+  }
+  .lastnamelabel{
+    margin-left:5px;  
+  }
+  .signupbtn{
+    margin-top:20px;
+    padding:13px;
+    background-color: #0060A4;
+    color:white;
+    border-radius: 4px;
+    border:none;
+    width:100%;
+  }
+  .signupbtn:hover{
+    background-color: #03538b;
+  }
+  .signupbtn:active{
+    outline:5px solid  rgb(149, 203, 241);
+  }
+  .logindiv{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .logindiv a{
+    text-decoration:none;
+    margin-left:5px;
+    color:#0060A4;
+    text-decoration: underline;
+  }
+  .logindiv a:hover{
+    text-decoration:none;
+    margin-left:10px;
+    color:#024372;
+    text-decoration: underline;
+  }
+  @media(max-width:830px){
+  .image{
+    display:none;
+  }
+  }
+  @media(max-width:425px) and (min-width:280px){
+    .signupinner{
+      width: 80%;
+      justify-content: center;
+    }
+    .signupform{
+      width: 100%;
+    }
+    h1{
+      font-size:20px;
+    }
+    p{
+      font-size:14px;
+    }
+    .signUpWithGoogle{
+      width: 100%;
+    }
+    .signUpWithGoogle span{
+      font-size:13px;
+    }
+    .namediv{
+      flex-direction:column;
+      } 
+    .logindiv span{
+      font-size:14px;
+    }
+    .welcometxt{
+      font-size:15px;
+    }
+    }
+  
+  
