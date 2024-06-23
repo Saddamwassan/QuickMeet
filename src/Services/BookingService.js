@@ -1,3 +1,4 @@
+import cookie from 'js-cookie';
 
 export const fetchBookings = async() => {
     try {
@@ -5,7 +6,7 @@ export const fetchBookings = async() => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        //   'Authorization': 'Bearer ' + localStorage.getItem('token'),
+          'Authorization': 'Bearer ' + cookie.get('access'),
         },
       };
   
