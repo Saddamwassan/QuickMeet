@@ -32,8 +32,8 @@ export const handleSubmit = (e)=>{
   }
   function setTokens(access,refresh){
     // document.cookie = "access=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-   cookie.set('access',access,{secure:true,expires:10,sameSite:"None"})
-   cookie.set('refresh',refresh,{secure:true,expires:10,sameSite:"None"})
+   cookie.set('access',access,{secure:true,expires:5,sameSite:"None"})
+   cookie.set('refresh',refresh,{secure:true,expires:5,sameSite:"None"})
   // localStorage.clear();
   // localStorage.setItem('access',access);
   // localStorage.setItem('refresh',refresh);
