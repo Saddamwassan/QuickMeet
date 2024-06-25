@@ -1,9 +1,12 @@
+import cookie from 'js-cookie';
+
 export const fetchServices = async()=>{
     try{
         const requestOptions = {
             method: 'GET',
             headers :{
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + cookie.get('access'),
             }
         }
         const response = await fetch('http://localhost:8000/schedules',requestOptions)

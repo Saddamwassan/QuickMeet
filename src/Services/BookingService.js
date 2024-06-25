@@ -1,13 +1,12 @@
 import cookie from 'js-cookie';
-
+import { generateNewToken } from './AuthService';
 export const fetchBookings = async() => {
     try {
-
       const requestOptions = {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer ' + cookie.get('access'),
           'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + cookie.get('access'),
         },
       };
       console.log(cookie.get('access'));
@@ -18,8 +17,7 @@ export const fetchBookings = async() => {
       const data = await response.json();
       return data;
     } catch (error){
-      console.log(error);
-
-      return null;
+      console.log('token backend working')
+      generateNewToken()
     }
 }
