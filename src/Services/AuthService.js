@@ -23,18 +23,18 @@ export const handleSubmit = async (e) => {
       });
       setTokens(res.data.accessToken, res.data.refreshToken);
       return res.data;
-
     } catch (err) {
       console.log('api not working boy!');
       console.log(err);
     }
   }
-  function setTokens(access, refresh) {
-    // document.cookie = "access=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-    cookie.set('access', access, { secure: true, expires: 5, sameSite: "None" })
-    cookie.set('refresh', refresh, { secure: true, expires: 5, sameSite: "None" })
-  }
+  
   await loginUser();
+}
+export function setTokens(access, refresh) {
+  // document.cookie = "access=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+  cookie.set('access', access, { secure: true, expires: 5, sameSite: "None" })
+  cookie.set('refresh', refresh, { secure: true, expires: 5, sameSite: "None" })
 }
 //   handle signup
 // export const handleSingupSubmit = (event) =>{
@@ -61,24 +61,31 @@ export const handleSubmit = async (e) => {
 //     setIsSubmit(false);
 //   }
 // }
- export async function generateNewToken(){
-  try{
+export async function generateNewToken(){
+  try {
+    const refreshToken = cookie.get('refresh');
+    if (!refreshToken) {
+      throw new Error('No refresh token available');
+    }
     const requestOptions = {
       method: 'POST',
       headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Bearer '+ cookie.get('refresh')
-               },
-      // body:cookie.get('refresh')
-    }
-    console.log(cookie.get('refresh'));
-    const res = await fetch('http://localhost:8000/token',requestOptions);
-    console.log('new token'+res.data);
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + refreshToken
+      }
+    };
+    console.log('Using refresh token:', refreshToken);
+    const res = await fetch('http://localhost:8000/token', requestOptions);
     if (!res.ok){
-      throw new Error('token call Failed to fetch token');
+      throw new Error('Failed to fetch new token');
     }
-    return res.data;
-  }catch(err){
-    console.log(err);
+    const data = await res.json();
+    console.log(data);
+    // console.log(res)
+    // setTokens(data.actoken,data.reftoken);
+    return data;
+  } catch (err) {
+    console.error('Error in generateNewToken:', err);
+    return null;
   }
 }

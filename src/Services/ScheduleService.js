@@ -1,4 +1,6 @@
 import cookie from 'js-cookie';
+import { generateNewToken } from './AuthService';
+
 
 export const fetchServices = async()=>{
     try{
@@ -16,7 +18,8 @@ export const fetchServices = async()=>{
         const data = response.json()
         return data;
     }catch(error){
-        console.log(error)
-        return null;
+        console.log('schedule page catch');
+     generateNewToken()
+
     }
 }
