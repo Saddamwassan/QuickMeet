@@ -2,6 +2,8 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 // import { validate } from './Validation'
 import cookie from 'js-cookie'
+// import { fetchBookings } from "./BookingService";
+// import { fetchSchedules } from "./ScheduleService";
 // handle sigup 
 export const handleSubmit = async (e) => {
   e.preventDefault();
@@ -73,7 +75,7 @@ export async function generateNewToken(){
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + refreshToken
       }
-    };
+    }
     console.log('Using refresh token:', refreshToken);
     const res = await fetch('http://localhost:8000/token', requestOptions);
     if (!res.ok){
@@ -82,7 +84,10 @@ export async function generateNewToken(){
     const data = await res.json();
     console.log(data);
     // console.log(res)
-    // setTokens(data.actoken,data.reftoken);
+    setTokens(data.actoken,data.reftoken);
+    next();
+    // fetchBookings();
+    // fetchSchedules();
     return data;
   } catch (err) {
     console.error('Error in generateNewToken:', err);

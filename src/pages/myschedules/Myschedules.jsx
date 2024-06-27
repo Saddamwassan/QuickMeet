@@ -4,20 +4,17 @@ import "./schedule.css"
 import Footer from '../../components/dashboard/Footer';
 import { Link } from 'react-router-dom';
 // import data from '../../components/mydata';
-import { fetchServices } from '../../Services/ScheduleService';
+import { fetchSchedules } from '../../Services/ScheduleService';
 import Swal from 'sweetalert2';
 // import { COLOR } from 'rsuite/esm/utils/constants';
 import { convertTimeStamp } from '../../helpers/TimeStampConvert';
 function Myschedules(){
   const [schedule,setSchedule] = useState([]);
   useEffect(()=>{
-    fetchServices()
+    fetchSchedules()
     .then(data =>setSchedule(data))
     .catch(error => console.log('error',error))
   },[]);
-console.log(convertTimeStamp("2024-06-19T06:34:46"));
-
- 
 
 // TimestampConverter()
   const alert = ()=>{

@@ -14,17 +14,6 @@ function BookingForm() {
   // const handleFormVisibility = ()=>{
   //   setFormVisible(false);
   // }
-  // setter 
-  const setter = ()=>{
-
-  }
-  // getter 
-  const getter = ()=>{
-    
-  }
-  function closeForm(){
-
-  }
   // alert 
   const alert = ()=>{
     Swal.fire({
