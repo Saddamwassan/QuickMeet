@@ -15,10 +15,10 @@ export const fetchSchedules = async () => {
         if (!response.ok) {
             throw new Error('failed to fetch schedules data')
         }
-        const data = response.json()
+        const data = await response.json()
         return data;
     } catch (error) {
-        generateNewToken()
-
+        generateNewToken();
+        next();
     }
 }

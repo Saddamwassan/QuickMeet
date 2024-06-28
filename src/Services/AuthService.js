@@ -25,7 +25,7 @@ export const handleSubmit = async (e) => {
       });
       setTokens(res.data.accessToken, res.data.refreshToken);
       return res.data;
-    } catch (err) {
+    } catch (err){
       console.log('api not working boy!');
       console.log(err);
     }
@@ -85,7 +85,6 @@ export async function generateNewToken(){
     console.log(data);
     // console.log(res)
     setTokens(data.actoken,data.reftoken);
-    next();
     // fetchBookings();
     // fetchSchedules();
     return data;
