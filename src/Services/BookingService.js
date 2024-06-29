@@ -14,8 +14,6 @@ export const fetchBookings = async() => {
       if(!response.ok){
         if(response.status(401)){
           console.log('token expired!');
-          //  await generateNewToken();
-          //  await fetchBookings();
         }
         
       
@@ -26,6 +24,7 @@ export const fetchBookings = async() => {
       return data;
     } catch (error){
       console.log('booking page catch');
-     
+            await generateNewToken();
+            await fetchBookings();
     }
 }
