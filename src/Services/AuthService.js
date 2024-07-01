@@ -76,17 +76,12 @@ export async function generateNewToken(){
         'Authorization': 'Bearer ' + refreshToken
       }
     }
-    console.log('Using refresh token:', refreshToken);
     const res = await fetch('http://localhost:8000/token', requestOptions);
     if (!res.ok){
-      throw new Error('Failed to fetch new token');
+      throw new Error('Failed to fetch new token'+res.status);
     }
     const data = await res.json();
-    console.log(data);
-    // console.log(res)
     setTokens(data.actoken,data.reftoken);
-    // fetchBookings();
-    // fetchSchedules();
     return data;
   } catch (err) {
     console.error('Error in generateNewToken:', err);

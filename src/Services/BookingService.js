@@ -11,20 +11,19 @@ export const fetchBookings = async() => {
       };
       // console.log(cookie.get('access'));
       const response  = await fetch("http://localhost:8000/bookings", requestOptions);
-      if(!response.ok){
-        if(response.status(401)){
-          console.log('token expired!');
+      if (!response.ok) {
+        if (response.status === 401) { // Token expired or unauthorized
+          console.log('Token expired or unauthorized. Generating new token...');
+          await generateNewToken();
+          return fetchBookings(); // Retry the function after generating a new token
+        } else {
+          throw new Error('Failed to fetch bookings: ' + response.statusText);
         }
-        
-      
-        throw new Error('Failed to fetch bookings');
       }
       const data = await response.json();
       console.log('working!')
       return data;
     } catch (error){
-      console.log('booking page catch');
-            await generateNewToken();
-            await fetchBookings();
+      throw error;
     }
 }

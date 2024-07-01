@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import "./dashboard.css"
 import logo from "../../assets/logo.png"
 import { Link } from 'react-router-dom'
-import {logout} from 'http://localhost:5173/logout';
+// import {logout} from 'http://localhost:5173/logout';
 function Nav() {
   const [isSidebar, setSidebar] = useState(false);
   // const [isLogout, setLogout] = useState([]);
