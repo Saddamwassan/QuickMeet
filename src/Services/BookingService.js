@@ -1,5 +1,7 @@
 import cookie from 'js-cookie';
 import { generateNewToken } from './AuthService';
+import axios from "axios";
+
 export const fetchBookings = async() => {
     try {
       const requestOptions = {
@@ -26,4 +28,25 @@ export const fetchBookings = async() => {
     } catch (error){
       throw error;
     }
+}
+export const setBookings= async(e) => {
+  e.preventDefault();
+  const title = e.target.title.value;
+  const url = e.target.url.value;
+  // const description = e.target.description.value;  
+  const duration = e.target.duration.value;
+  const data = {title,url,duration}
+
+  console.log(title);
+  try{
+    const res = await axios('http://localhost:8000/bookings/create',data);
+    if(!res.ok){
+     return res.status;
+    }
+    console.log('booking created!');
+    return res;
+
+  }catch(err){
+    throw err;
+  }
 }

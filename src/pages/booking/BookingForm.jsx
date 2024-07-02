@@ -1,6 +1,6 @@
 import './bookingform.css'
 import Nav from '../../components/dashboard/nav'
-import React, { useState,Component } from 'react';
+import React, { useState,useEffect,Component } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -8,12 +8,12 @@ import Button from '../../components/buttons/Button';
 import Footer from '../../components/dashboard/Footer';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { setBookings } from '../../Services/BookingService';
 
-function BookingForm() {
-  // const[isFormVisible, setFormVisible] = useState(true);
-  // const handleFormVisibility = ()=>{
-  //   setFormVisible(false);
-  // }
+function BookingForm(){
+useEffect(()=>{
+
+})
   // alert 
   const alert = ()=>{
     Swal.fire({
@@ -29,16 +29,18 @@ function BookingForm() {
       <Nav />
       <div className="bookingcontainer">
         <div className="bookingform">
+          <form action="#" method='POST' onSubmit={setBookings}>
           <h3>Book Your Meeting</h3>
+            
           {/* title  */}
           <div className='row'>
             <label htmlFor="title" >Title:</label>
-            <input type="text" placeholder='title' />
+            <input type="text" placeholder='title' name='title' />
           </div>
           {/* url  */}
           <div className="row">
             <label htmlFor="url">URL:</label>
-            <input type="text" placeholder='url' />
+            <input type="text" placeholder='url' name='url' />
           </div>
           {/* editor  */}
           <div className='row'>
@@ -46,24 +48,16 @@ function BookingForm() {
             <CKEditor
               editor={ClassicEditor}
               data="<p>Hello World</p>"
-             
-              // onReady={editor => {
-              //     console.log(editor)
-              // }}
-              // onChange={(event, editor) => {
-              //     console.log(editor.getData())
-              // }}
-
               onBlur={(event, editor) => { }}
-
               onFocus={(event, editor) => { }}
+              name = "description"
             />
           </div>
           {/* duration  */}
           <div className="row">
             <label htmlFor="duration">Duration:</label>
             <div>
-              <input type="number" className='durationinput'/>
+              <input type="number" className='durationinput' name='duration'/>
               <span>minutes</span>
             </div>
           </div>
@@ -131,6 +125,7 @@ function BookingForm() {
               <Button type="Add booking" className="Add_booking" onClick={alert}/>
             </div>
           </div>
+          </form>
 
         </div>
       </div>
