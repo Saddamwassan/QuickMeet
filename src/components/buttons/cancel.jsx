@@ -1,9 +1,11 @@
 import React from 'react'
 
-function cancel() {
+function Cancel({value,className,onClick}) {
   return (
-    <div>cancel</div>
+    <button className={className} onClick = {onClick}>
+        {value}
+    </button>
   )
 }
 
-export default cancel
+export default Cancel

@@ -29,23 +29,20 @@ export const fetchBookings = async() => {
       throw error;
     }
 }
-export const setBookings= async(e) => {
+export const createBookings = async(e) => {
   e.preventDefault();
   const title = e.target.title.value;
   const url = e.target.url.value;
   // const description = e.target.description.value;  
   const duration = e.target.duration.value;
-  const data = {title,url,duration}
-
-  console.log(title);
+  const data = {title,duration,url}
   try{
-    const res = await axios('http://localhost:8000/bookings/create',data);
+    const res = await axios.post('http://localhost:8000/bookings/create',data);
     if(!res.ok){
      return res.status;
     }
     console.log('booking created!');
-    return res;
-
+    return res.data;
   }catch(err){
     throw err;
   }

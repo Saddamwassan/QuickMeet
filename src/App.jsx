@@ -8,7 +8,7 @@ import Dashboard from "./components/dashboard/dashboard"
 import BookingForm from "./pages/booking/BookingForm"
 import Alert from "./components/dashboard/Alert"
 import Edit from "./pages/Edit"
-import Login from "./pages/auth/login"
+import ScheduleForm from "./pages/myschedules/scheduleForm"
 export default function App(){
   const router = createBrowserRouter([
     {
@@ -42,6 +42,10 @@ export default function App(){
     {
       path:'/auth',
       element:<Auth />
+    },
+    {
+      path:'/ScheduleForm',
+      element:<ScheduleForm/>
     }
   ])
   return(

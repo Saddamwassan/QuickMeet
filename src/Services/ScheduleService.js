@@ -27,3 +27,22 @@ export const fetchSchedules = async () => {
         throw error;
     }
 }
+// submit schedule 
+export const createSchedules = async(e) => {
+    e.preventDefault();
+    const fullname = e.target.fullname.value;
+    const email = e.target.email.value;
+    // const dateandtime = e.target.date.value + e.target.time.value;
+    const data = {fullname,email}
+    console.log(data);
+    try{
+      const res = await axios.post('http://localhost:8000/schedules/create',data);
+      if(!res.ok){
+       return res.status;
+      }
+      console.log('booking created!');
+      return res.data;
+    }catch(err){
+      throw err;
+    }
+  }

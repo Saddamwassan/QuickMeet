@@ -8,12 +8,14 @@ import Button from '../../components/buttons/Button';
 import Footer from '../../components/dashboard/Footer';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-import { setBookings } from '../../Services/BookingService';
-
+import { createBookings } from '../../Services/BookingService';
 function BookingForm(){
+  const [booking,setBooking] = useState([]);
 useEffect(()=>{
-
-})
+createBookings()
+.then(data =>setBooking(data))
+.catch(err => console.log(err))
+,[]})
   // alert 
   const alert = ()=>{
     Swal.fire({
@@ -29,7 +31,7 @@ useEffect(()=>{
       <Nav />
       <div className="bookingcontainer">
         <div className="bookingform">
-          <form action="#" method='POST' onSubmit={setBookings}>
+          <form action="#" method='POST' onSubmit={createBookings}>
           <h3>Book Your Meeting</h3>
             
           {/* title  */}

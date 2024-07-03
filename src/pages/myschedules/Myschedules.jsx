@@ -3,10 +3,8 @@ import Nav from '../../components/dashboard/nav'
 import "./schedule.css"
 import Footer from '../../components/dashboard/Footer';
 import { Link } from 'react-router-dom';
-// import data from '../../components/mydata';
 import { fetchSchedules } from '../../Services/ScheduleService';
 import Swal from 'sweetalert2';
-// import { COLOR } from 'rsuite/esm/utils/constants';
 import { convertTimeStamp } from '../../helpers/TimeStampConvert';
 function Myschedules(){
   const [schedule,setSchedule] = useState([]);
@@ -40,6 +38,7 @@ function Myschedules(){
     <>
     <Nav/>
     <div className='myschedule'>
+      <Link to="scheduleform">shedule Form</Link>
       <h3>My Bookings</h3>
         {/* labels  */}
         <table className='tablerow'>
