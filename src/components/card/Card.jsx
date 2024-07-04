@@ -3,7 +3,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./card.css"
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { editBookingData } from '../../Services/handleEdit';
+// import { editBookingData } from '../../Services/handleEdit';
 
 function Card({ data,value }) {
   // console.log(data);
@@ -29,11 +29,11 @@ function Card({ data,value }) {
   }
   const [isOn, setStatus] = useState(false);
   const [isEdit,setEdit] = useState([]);
-  useEffect(()=>{
-    editBookingData()
-    .then(data=>setEdit(data))
-    .catch(err=>console.log(err))
-  })
+  // useEffect(()=>{
+  //   editBookingData()
+  //   .then(data=>setEdit(data))
+  //   .catch(err=>console.log(err))
+  // })
   return (
     <div className='card'>
       <h3>{`${data.duration} ${data.title}`}</h3>
@@ -68,7 +68,7 @@ function Card({ data,value }) {
       <div className="editdiv">
         <Link className="delete" onClick={alert}>Delete
         </Link>
-        <Link to="/editpage" className="edit" onClick={editBookingData()}>Edit</Link>
+        <Link to={`/editpage/${data.id}`} className="edit">Edit</Link>
       </div>
     </div>
   )

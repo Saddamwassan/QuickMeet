@@ -29,13 +29,8 @@ export const fetchBookings = async() => {
       throw error;
     }
 }
-export const createBookings = async(e) => {
-  e.preventDefault();
-  const title = e.target.title.value;
-  const url = e.target.url.value;
-  // const description = e.target.description.value;  
-  const duration = e.target.duration.value;
-  const data = {title,duration,url}
+// create bookings 
+export const createBookings = async(data) => {
   try{
     const res = await axios.post('http://localhost:8000/bookings/create',data);
     if(!res.ok){
@@ -45,5 +40,61 @@ export const createBookings = async(e) => {
     return res.data;
   }catch(err){
     throw err;
+  }
+}
+// get booking by id 
+export const getBookingDetailsById = async(id) => {
+  try {
+    const requestOptions = {
+      method: 'GET',  
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + cookie.get('access'),
+      },
+    };
+    const response  = await fetch(`http://localhost:8000/bookings/${id}`, requestOptions);
+    if (!response.ok) {
+      if (response.status === 401) { // Token expired or unauthorized
+        console.log('Token expired or unauthorized. Generating new token...');
+        await generateNewToken();
+        return getBookingDetailsById(id); // Retry the function after generating a new token
+      } else {
+        throw new Error('Failed to fetch bookings: ' + response.statusText);
+      }
+    }
+    const data = await response.json();
+    console.log('working!')
+    console.log(data);
+    return data;
+  } catch (error){
+    throw error;
+  }
+}
+// update booking by id 
+export const updateBookingById = async(id) => {
+  try {
+    const requestOptions = {
+      method: 'PUT',  
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + cookie.get('access'),
+      },
+    };
+    const response  = await fetch(`http://localhost:8000/bookings/update/${id}`, requestOptions);
+    if (!response.ok) {
+      if (response.status === 401) { // Token expired or unauthorized
+        console.log('Token expired or unauthorized. Generating new token...');
+        await generateNewToken();
+        return updateBookingById(id); // Retry the function after generating a new token
+      } else {
+        throw new Error('Could not update booking: ' + response.statusText);
+      }
+    }
+    const data = await response.json();
+    console.log('working!')
+    console.log(data);
+    return data;
+  } catch (error){
+    throw error;
   }
 }

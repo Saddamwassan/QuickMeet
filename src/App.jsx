@@ -36,7 +36,7 @@ export default function App(){
       element:<Alert />
     },
     {
-      path:'/editpage',
+      path:'/editpage/:id',
       element:<Edit />
     },
     {
