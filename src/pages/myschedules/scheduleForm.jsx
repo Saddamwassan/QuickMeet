@@ -30,7 +30,6 @@ function ScheduleForm(){
     }catch(err){
       console.log(err)
     }
-
   }
     // alert 
     // const alert = ()=>{
