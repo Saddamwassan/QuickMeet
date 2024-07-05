@@ -1,21 +1,22 @@
-import './booking/bookingform.css';
-import Nav from '../components/dashboard/nav';
+import './bookingform.css';
+import Nav from '../../components/dashboard/nav';
 import React, { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Button from '../components/buttons/Button';
-import Footer from '../components/dashboard/Footer';
+import Button from '../../components/buttons/Button';
+import Footer from '../../components/dashboard/Footer';
 import { Link, useParams } from 'react-router-dom';
-import { getBookingDetailsById, updateBookingById } from '../Services/BookingService';
+import { getBookingDetailsById, updateBookingById } from '../../Services/BookingService';
 
 function Edit() {
   const { id } = useParams(); // Access the ID from the URL
   const [formdata, setFormData] = useState({
     title: '',
-    link: '',
     description: '',
-    duration: ''
+    duration: '',
+    link: ''
   });
+ 
   // to get plain text for ckeditor 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,18 +29,24 @@ function Edit() {
   const updateBookingData = async (e) => {
     e.preventDefault();
     console.log('Form submitted with data:', formdata);
-    await updateBookingById(id)
-    .then(alert("booking updated!"))
-    .catch(error=>console.log(error))
-  }
+    try {
+      let data = JSON.stringify(formdata)
+      let response = await updateBookingById(id, data)
+      const responseText = await response.text(); // Read the response text
+      alert(responseText); 
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     getBookingDetailsById(id)
       .then(data => setFormData({
         title: data.title,
-        link: data.link,
         description: data.description,
-        duration: data.duration
+        duration: data.duration,
+        link: data.link
       }))
       .catch(err => console.log(err));
   }, [id]);
@@ -87,13 +94,6 @@ function Edit() {
                     description: data
                   }));
                 }}
-                onBlur={(event, editor) => {
-                  console.log('Blur.', editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log('Focus.', editor);
-                }}
-                name="description"
               />
             </div>
             {/* duration  */}
@@ -180,7 +180,7 @@ function Edit() {
               <p>Define specific dates to exclude from your weekly availability.</p>
               <div className="btnrow">
                 <Link to='#' className='cancel'>cancel</Link>
-                <Button type="Add booking" className="Add_booking" />
+                <Button name="Add booking" className="Add_booking" type='submit'/>
               </div>
             </div>
           </form>

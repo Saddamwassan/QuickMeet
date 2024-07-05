@@ -71,29 +71,35 @@ export const getBookingDetailsById = async(id) => {
   }
 }
 // update booking by id 
-export const updateBookingById = async(id) => {
+export const updateBookingById = async(id,formdata) => {
+  console.log('formdata is found'+formdata);
+  console.log('id is found'+ id);
   try {
     const requestOptions = {
       method: 'PUT',  
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + cookie.get('access'),
+        // 'Authorization': 'Bearer ' + cookie.get('access'),
       },
+      body:formdata
     };
     const response  = await fetch(`http://localhost:8000/bookings/update/${id}`, requestOptions);
     if (!response.ok) {
       if (response.status === 401) { // Token expired or unauthorized
         console.log('Token expired or unauthorized. Generating new token...');
-        await generateNewToken();
-        return updateBookingById(id); // Retry the function after generating a new token
+        // await generateNewToken();
+        // return updateBookingById(id,formdata); // Retry the function after generating a new token
       } else {
         throw new Error('Could not update booking: ' + response.statusText);
       }
+    }else{
+      console.log(response);
+      // alert(response.text());
+      // const data = await response.json();
+      console.log('working!')
+      console.log("data", response);
+      return response;
     }
-    const data = await response.json();
-    console.log('working!')
-    console.log(data);
-    return data;
   } catch (error){
     throw error;
   }

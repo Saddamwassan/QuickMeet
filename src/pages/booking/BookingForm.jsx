@@ -8,17 +8,12 @@ import Footer from '../../components/dashboard/Footer';
 import { Link } from 'react-router-dom';
 import { createBookings } from '../../Services/BookingService';
 function BookingForm(){
-  const [booking, setBooking] = useState('');
   const [editorData, setEditorData] = useState('<p>this this</p>');
-  const getPlainText = (html) => {
-    const tempElement = document.createElement('div');
-    tempElement.innerHTML = html;
-    return tempElement.innerText || tempElement.textContent;
-  };
+
   const storeBooking =  async(e) => {
     e.preventDefault();
     const title = e.target.title.value;
-    const description = getPlainText(editorData);  
+    const description = editorData;  
     const duration = e.target.duration.value;
     const url = e.target.url.value;
     const data = {title,duration,url,description}
@@ -57,13 +52,6 @@ function BookingForm(){
                   setEditorData(data);
                   console.log(data) // Update state with new data
                 }}
-                onBlur={(event, editor) => {
-                  console.log('Blur.', editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log('Focus.', editor);
-                }}
-                name="description"
               />
             </div>
             {/* duration  */}
@@ -138,7 +126,7 @@ function BookingForm(){
               <p>Define specific dates to exclude from your weekly availibility.</p>
               <div className="btnrow">
                 <Link to='/dashboard' className='cancel'>Cancel</Link>
-                <Button type="Add booking" className="Add_booking" />
+                <Button name="Add booking" className="Add_booking" type='submit'/>
               </div>
             </div>
           </form>
