@@ -14,4 +14,10 @@ beautify schedule page
 
 database structure with node
 
+tasks :
+=> regenerate authentication.
+-> charts
+whatsapp / email integration
+forget pass with email
+google map api integration/ lat,long
 

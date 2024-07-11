@@ -104,3 +104,32 @@ export const updateBookingById = async(id,formdata) => {
     throw error;
   }
 }
+// delete card 
+export const deleteBookingCard = async(id) => {
+  console.log(id)
+  try {
+    const requestOptions = {
+      method: 'POST',  
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + cookie.get('access'),
+      },
+    };
+    const response  = await fetch(`http://localhost:8000/bookings/delete/${id}`, requestOptions);
+    if (!response.ok){
+      if (response.status === 401){ // Token expired or unauthorized
+        console.log('Token expired or unauthorized. Generating new token...');
+        await generateNewToken();
+        return getBookingDetailsById(id); // Retry the function after generating a new token
+      } else {
+        throw new Error('Failed to fetch bookings: ' + response.statusText);
+      }
+    }
+    const data = await response.json();
+    console.log('working!')
+    console.log(data);
+    return data;
+  } catch (error){
+    throw error;
+  }
+}

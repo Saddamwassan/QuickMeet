@@ -56,7 +56,7 @@ function Myschedules(){
             {
                schedule.map((item)=>
                 <tr key={item.id}>
-                  <td className='day'>{item.schedule_dt ? convertTimeStamp(item.schedule_dt) : ''}</td>
+                  <td className='Date'>{item.schedule_dt ? convertTimeStamp(item.schedule_dt) : ''}</td>
                   <td className=''>{item.duration} minutes</td>
                   <td className='meetingtype'>{item.message}</td>
                   <td className='with'>{item.fullname}</td>

@@ -70,7 +70,7 @@ function Profile() {
     }
       </div>
       </div>
-      <Button type='save' className='Add_booking' onClick={alert}/>
+      <Button name='save' className='Add_booking' onClick={alert}/>
     </div>
     <Footer />
     </>

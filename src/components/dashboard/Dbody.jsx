@@ -3,26 +3,37 @@ import { Link } from 'react-router-dom'
 import { fetchBookings } from '../../Services/BookingService';
 import Card from '../card/Card'
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import data from '../../utils/data'
-
+import { getScheduleCount } from '../../Services/ScheduleService';
 function Dbody() {
+  const scheduleCount = [];
   const [bookings, setBookings] = useState([]);
+  const [chartData, setChartData] = useState([]);
     useEffect(()=>{
         fetchBookings()
        .then(data => setBookings(data))
        .catch(error => console.log('error',error));
-    },[])
+    },[]);
+    // for schedule count 
+    useEffect(()=>{
+      getScheduleCount()
+      .then(data=>setChartData(data))
+      .catch(error=> console.log(error));
+    },[]);
+    chartData.forEach(item =>scheduleCount.push({
+      name:item.schdl_dt,
+      booked:item.tot_schdls
+    }));
+    // console.log( scheduleCount);
   return (
     <div className='dbody'>
         <div className="text">
         <h2>Appointments</h2>
-        {/* <BarChart /> */}
         </div>
        
         <BarChart
           width={500}
           height={300}
-          data={data}
+          data={scheduleCount}
           margin={{
             top: 20,
             right: 30,

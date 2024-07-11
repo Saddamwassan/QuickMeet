@@ -31,10 +31,5 @@ why we use refresh token?
 store token into http only cookie 
 HTTPOnly cookies are created and managed by the server and are not accessible by client-side JavaScript code. Also, if enabled, the browser automatically sends these cookies in the Cookie HTTP header with every request to the server. This makes HTTPOnly cookies a good option to store JWT tokens obtained after successful authentication so that these tokens can be sent with every subsequent API request to the server automatically without needing any additional code to send it explicitly.
 
-tasks :
-=> regenerate authentication.
--> charts
-whatsapp / email integration
-forget pass with email
-google map api integration/ lat,long
+
 
