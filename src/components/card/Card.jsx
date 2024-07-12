@@ -5,48 +5,22 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 // import { editBookingData } from '../../Services/handleEdit';
 import { deleteBookingCard } from '../../Services/BookingService';
-function Card({ data,value }) {
+function Card({data, onDelete }){
   // for deleting card 
-  const deleteBookingData = async()=>{
+  const deleteBookingData = async(e)=>{
     await deleteBookingCard(`${data.id}`)
-    .then('card deleted!')
+    .then(onDelete(data.id))
     .catch(err=>console.log(err))
   }
-  // console.log(data);
-  // const alert = ()=>{
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!"
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire({
-  //         title: "Deleted!",
-  //         text: "Your card has been deleted.",
-  //         icon: "success"
-  //       });
-  //     }
-  //   });
-    
-  // }
   const [isOn, setStatus] = useState(false);
-  const [isEdit,setEdit] = useState([]);
-  // useEffect(()=>{
-  //   editBookingData()
-  //   .then(data=>setEdit(data))
-  //   .catch(err=>console.log(err))
-  // })
+
   return (
     <div className='card'>
       <h3>{`${data.duration} ${data.title}`}</h3>
       {/* link  */}
       <div className="linkdiv">
-        <span className='linkitself'>{data.link}</ span>
-        <CopyToClipboard text={`${data.link} ${data.id}`}>
+        <span className='linkitself'>{`${data.link}${data.id}`}</ span>
+        <CopyToClipboard text={`${data.link}${data.id}`}>
         <Link to="#" className='copylink'>copy link</Link>
         </CopyToClipboard>
       </div>
@@ -72,8 +46,7 @@ function Card({ data,value }) {
         <a href="x"><i className="fa-brands fa-x-twitter"></i></a>
       </div>
       <div className="editdiv">
-        <Link className="delete" onClick={deleteBookingData()}>Delete
-        </Link>
+        <button onClick={deleteBookingData} className='delete'>Delete</button>
         <Link to={`/editpage/${data.id}`} className="edit">Edit</Link>
       </div>
     </div>

@@ -28,7 +28,7 @@ function ScheduleForm(){
        await createSchedules(data)
       .then(alert('Schedule created successfully!'))
     }catch(err){
-      console.log(err)
+      console.log(err);
     }
   }
     // alert 

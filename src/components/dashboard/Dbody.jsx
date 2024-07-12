@@ -23,6 +23,12 @@ function Dbody() {
       name:item.schdl_dt,
       booked:item.tot_schdls
     }));
+
+    const handleDelete = (id) => {
+      setBookings(bookings.filter(booking => booking.id !== id));
+    };
+     
+     
     // console.log( scheduleCount);
   return (
     <div className='dbody'>
@@ -47,7 +53,6 @@ function Dbody() {
           <Tooltip />
           <Legend />
           <Bar dataKey="booked" stackId="a" fill="#257AF9" />
-          {/* <Bar dataKey="cancelled" stackId="a" fill="#FF0000" /> */}
         </BarChart>
     
         <div className="cards">
@@ -57,8 +62,11 @@ function Dbody() {
             </div>
         </Link>
         {
-        bookings.map((item,index)=>
-        <Card data={item} key ={index}/>)
+          bookings.map(
+            (item,index) =>
+            <Card data={item} key ={index} onDelete={handleDelete}/>
+        )
+
         }
         </div>
     </div>

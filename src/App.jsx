@@ -44,9 +44,8 @@ export default function App(){
       element:<Auth />
     },
     {
-      path:'/myschedules/scheduleform',
+      path:'/myschedules/scheduleform/:id',
       element:<ScheduleForm />
-    
     }
   ])
   return(

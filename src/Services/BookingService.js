@@ -105,11 +105,10 @@ export const updateBookingById = async(id,formdata) => {
   }
 }
 // delete card 
-export const deleteBookingCard = async(id) => {
-  console.log(id)
+export const deleteBookingCard = async(id) =>{
   try {
     const requestOptions = {
-      method: 'POST',  
+      method: 'delete',  
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + cookie.get('access'),
@@ -126,8 +125,6 @@ export const deleteBookingCard = async(id) => {
       }
     }
     const data = await response.json();
-    console.log('working!')
-    console.log(data);
     return data;
   } catch (error){
     throw error;

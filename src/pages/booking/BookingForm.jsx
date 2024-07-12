@@ -7,8 +7,11 @@ import Button from '../../components/buttons/Button';
 import Footer from '../../components/dashboard/Footer';
 import { Link } from 'react-router-dom';
 import { createBookings } from '../../Services/BookingService';
+// import dotenv from 'dotenv';
+// dotenv.config();
 function BookingForm(){
   const [editorData, setEditorData] = useState('<p>this this</p>');
+  const [urlValue ,setUrlValue] = useState('http://localhost:5173/myschedules/scheduleform/')
 
   const storeBooking =  async(e) => {
     e.preventDefault();
@@ -17,8 +20,6 @@ function BookingForm(){
     const duration = e.target.duration.value;
     const url = e.target.url.value;
     const data = {title,duration,url,description}
-    console.log(description);
-
     await createBookings(data)
     .then(alert("your booking created!"))
     .catch(error=>console.log(error));
@@ -39,7 +40,7 @@ function BookingForm(){
             {/* url  */}
             <div className="row">
               <label htmlFor="url">URL:</label>
-              <input type="text" placeholder='url' name='url' />
+              <input type="text" placeholder='url' name='url' value={urlValue} onChange={(e)=>{setUrlValue(e.target.value)}}/>
             </div>
             {/* editor  */}
             <div className='row'>

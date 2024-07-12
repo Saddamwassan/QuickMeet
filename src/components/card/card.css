@@ -31,6 +31,8 @@
 .linkitself{
     color:#257af9;
     font-weight:bold;
+    overflow-x:scroll;
+    /* padding-right:10px; */
 }
 .linkdiv a{
     text-decoration: none;
@@ -151,6 +153,8 @@ color: gold;
 }
 .delete{
     color:red;
+    background: none;
+    border: none;
 }
 .delete:hover{
     color:rgb(202, 8, 8);
