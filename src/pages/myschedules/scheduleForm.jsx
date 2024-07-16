@@ -5,11 +5,12 @@ import Cancel from '../../components/buttons/cancel'
 import { createSchedules } from '../../Services/ScheduleService'
 import Swal from 'sweetalert2'
 function ScheduleForm(){
-  const [scheduleData,setScheduleData] = useState({
+  const initialValues = {
     fullname:'',
     email:'',
     dateTime:''
-  });
+  }
+  const [scheduleData,setScheduleData] = useState(initialValues);
   
 
   const handleChange = (e) => {
@@ -21,26 +22,27 @@ function ScheduleForm(){
   };  
   const handleSchedule = async (e)=>{
     e.preventDefault();
-    console.log(e);
-    console.log('form submitted with'+JSON.stringify(scheduleData))
     try{
       const data = JSON.stringify(scheduleData);
        await createSchedules(data)
-      .then(alert('Schedule created successfully!'))
+      .then(
+        alert,
+        setScheduleData(initialValues),
+    )
     }catch(err){
       console.log(err);
     }
   }
     // alert 
-    // const alert = ()=>{
-    //   Swal.fire({
-    //     position: "center",
-    //     icon: "success",
-    //     title: "Your meeting is booked!",
-    //     showConfirmButton: false,
-    //     timer: 1500
-    //   });
-    // }
+    const alert = ()=>{
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your meeting is booked!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   return (
   //  schedule form 
   <>

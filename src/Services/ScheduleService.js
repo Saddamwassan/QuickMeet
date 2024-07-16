@@ -30,7 +30,6 @@ export const fetchSchedules = async () => {
 }
 // submit schedule 
 export const createSchedules = async(data) => {
-    console.log('before hiting api '+ data);
     try{
       const res = await axios.post('http://localhost:8000/schedules/create',JSON.parse(data));
       if(!res.ok){
@@ -68,3 +67,29 @@ export const getScheduleCount = async () => {
         throw error;
     }
 }
+// delete schedule 
+export const deleteSchedule = async(id) =>{
+    try {
+      const requestOptions = {
+        method: 'delete',  
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + cookie.get('access'),
+        },
+      };
+      const response  = await fetch(`http://localhost:8000/schedules/delete/${id}`, requestOptions);
+      if (!response.ok){
+        if (response.status === 401){ // Token expired or unauthorized
+          console.log('Token expired or unauthorized. Generating new token...');
+          await generateNewToken();
+          return getBookingDetailsById(id); // Retry the function after generating a new token
+        } else {
+          throw new Error('Failed to fetch bookings: ' + response.statusText);
+        }
+      }
+      const data = await response.json();
+      return data;
+    } catch (error){
+      throw error;
+    }
+  }
