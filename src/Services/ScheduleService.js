@@ -68,7 +68,7 @@ export const getScheduleCount = async () => {
     }
 }
 // delete schedule 
-export const deleteSchedule = async(id) =>{
+export const deleteBookingSchedule = async(id) =>{
     try {
       const requestOptions = {
         method: 'delete',  
@@ -82,7 +82,7 @@ export const deleteSchedule = async(id) =>{
         if (response.status === 401){ // Token expired or unauthorized
           console.log('Token expired or unauthorized. Generating new token...');
           await generateNewToken();
-          return getBookingDetailsById(id); // Retry the function after generating a new token
+          return fetchSchedules();
         } else {
           throw new Error('Failed to fetch bookings: ' + response.statusText);
         }

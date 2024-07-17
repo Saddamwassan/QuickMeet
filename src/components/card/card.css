@@ -24,14 +24,14 @@
     justify-content: space-between;
     margin:5px 0;
     border-top:1px solid rgb(221, 220, 220);
-    padding:0 20px;
+    padding:0 11px;
     font-size: 14px;
 }
 .linkitself{
     color:#257af9;
     font-weight:bold;
     overflow-x:scroll;
-    /* padding-right:10px; */
+    margin-right:5px;
 }
 .linkdiv a{
     text-decoration: none;

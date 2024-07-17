@@ -35,7 +35,7 @@ function Signup(){
             icon: "success",
             title: "You are registered! Please login",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1000
           });
           setFormValues(initialValues);
         })

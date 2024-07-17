@@ -3,7 +3,7 @@ import Nav from '../../components/dashboard/nav'
 import "./schedule.css"
 import Footer from '../../components/dashboard/Footer';
 import { Link } from 'react-router-dom';
-import { fetchSchedules } from '../../Services/ScheduleService';
+import { deleteBookingSchedule, fetchSchedules } from '../../Services/ScheduleService';
 import Swal from 'sweetalert2';
 import { convertTimeStamp } from '../../helpers/TimeStampConvert';
 function Myschedules(){
@@ -13,9 +13,15 @@ function Myschedules(){
     .then(data =>setSchedule(data))
     .catch(error => console.log('error',error))
   },[]);
+   const handleDeleteSchedule = async(id)=>{
+    console.log('deleted!');
+    await deleteBookingSchedule(id)
+    .then(setSchedule(schedule.filter((row)=>row.id !== id)))
+    .catch(err =>console.log(err))
+  }
 
 // TimestampConverter()
-  const alert = ()=>{
+  const alert = (id)=>{
     Swal.fire({
       title: "Are you sure?",
       text: "You want to cancel this meeting!",
@@ -26,10 +32,14 @@ function Myschedules(){
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
+        handleDeleteSchedule(id),
         Swal.fire({
           title: "Deleted!",
           text: "Your card has been deleted.",
-          icon: "success"
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1000
+          
         });
       }
     });
@@ -62,7 +72,7 @@ function Myschedules(){
                   <td className='with'>{item.fullname}</td>
                   <td className='status'><div className='statusbtn' style={{backgroundColor:item.status?'green':'#DC3545'}}>{item.status?"Scheduled":"Cancel"}</div></td>
                   <td className='action'>
-                    <Link to='#' className='actioncancel' onClick={alert}>Cancel</Link>
+                    <Link to='#' className='actioncancel' onClick={()=>{alert(item.id)}}>Cancel</Link>
                     <Link to='/editpage' className='actionreschedule'>Reschedule</Link>
                   </td>
                 </tr>

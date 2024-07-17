@@ -21,7 +21,7 @@ function Card({data, onDelete }){
       <div className="linkdiv">
         <span className='linkitself'>{`${data.link}${data.id}`}</ span>
         <CopyToClipboard text={`${data.link}${data.id}`}>
-        <Link to="#" className='copylink'>copy link</Link>
+        <span className='copylink'>copy</span>
         </CopyToClipboard>
       </div>
       {/* booking status  */}

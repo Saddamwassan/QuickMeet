@@ -7,6 +7,7 @@ import Button from '../../components/buttons/Button';
 import Footer from '../../components/dashboard/Footer';
 import { Link } from 'react-router-dom';
 import { createBookings } from '../../Services/BookingService';
+import Swal from 'sweetalert2';
 // import dotenv from 'dotenv';
 // dotenv.config();
 function BookingForm(){
@@ -21,7 +22,15 @@ function BookingForm(){
     const url = e.target.url.value;
     const data = {title,duration,url,description}
     await createBookings(data)
-    .then(alert("your booking created!"))
+    .then(
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Booking Created!",
+        showConfirmButton: false,
+        timer: 1500
+      })
+    )
     .catch(error=>console.log(error));
   }
   return (

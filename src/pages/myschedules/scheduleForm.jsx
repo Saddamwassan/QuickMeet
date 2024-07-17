@@ -40,7 +40,7 @@ function ScheduleForm(){
         icon: "success",
         title: "Your meeting is booked!",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1000
       });
     }
   return (
