@@ -22,6 +22,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
+    "react-stripe-checkout": "^2.6.3",
     "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
     "rsuite": "^5.61.0",

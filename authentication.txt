@@ -1,0 +1,40 @@
+first intall some packages in your project
+npm init -y
+then 
+npm i express bcrypt for cryptography 
+ bcrypt is an async library used to secure credentials.
+
+
+jwt token
+libraries required 
+express
+jsonwebtoken
+dotenv
+
+post data from login page to a func => login()
+func login -> email and pass select 
+if user found in db gen jwt token and return
+
+generate key for token => require('crypto').randomBytes(64).toString('hex')
+
+tokens_-----------
+Access tokens are usually short-lived tokens that expire after a short period of time.
+
+Refresh Token: Refresh tokens are long-lived tokens that are used to obtain new access tokens when the current ones expire. Refresh tokens allow users to get new access tokens without having to log in again.
+
+why we use refresh token?
+1. To invalidate users that should not have access to your account.
+2. To take authenticate and authorization code to different server from normal server.
+
+ except login register , forgot ,reset api's authentication don't need
+
+store token into http only cookie 
+HTTPOnly cookies are created and managed by the server and are not accessible by client-side JavaScript code. Also, if enabled, the browser automatically sends these cookies in the Cookie HTTP header with every request to the server. This makes HTTPOnly cookies a good option to store JWT tokens obtained after successful authentication so that these tokens can be sent with every subsequent API request to the server automatically without needing any additional code to send it explicitly.
+
+tasks :
+=> regenerate authentication.
+-> charts
+whatsapp / email integration
+forget pass with email
+google map api integration/ lat,long
+

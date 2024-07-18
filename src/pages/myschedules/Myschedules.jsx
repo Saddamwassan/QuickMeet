@@ -48,7 +48,6 @@ function Myschedules(){
     <>
     <Nav/>
     <div className='myschedule'>
-      <Link to="scheduleform">shedule Form</Link>
       <h3>My Bookings</h3>
         {/* labels  */}
         <table className='tablerow'>

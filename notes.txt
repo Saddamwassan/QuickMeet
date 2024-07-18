@@ -1,0 +1,17 @@
+node server
+api node
+version above 16
+signup correction letter 
+tooltips
+profile fields = signup fields
+status bags size and text schedules
+button from bootstrap
+logo + project name
+name in tab
+vercel hosting
+beautify schedule page
+
+
+database structure with node
+
+
