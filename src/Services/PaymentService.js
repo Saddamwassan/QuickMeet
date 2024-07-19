@@ -1,4 +1,25 @@
-// export const makePayment = async (token)=>{
+export const sendPaymentToStripe = async (data) =>{
+    try{
+        const header = {
+            "Content-Type":"application/json"
+        }
+        const response = await fetch('http://localhost:8000/payment',{
+            method:"POST",
+            headers:header,
+            body: JSON.stringify(data)
+        })
+        if(response.ok){
+            console.log(response);
+            console.log(response.status);
+            return response.json();
+        }else{
+            console.log("Response Not Ok" + response);
+        }
+    }catch(err){
+        console.log(err)
+    }
+    }
+// export const makePayment = async token =>{
 //     try{
 //         const body = {
 //         token,
@@ -7,7 +28,7 @@
 //         const header = {
 //             "Content-Type":"application/json"
 //         }
-//         const response = await fetch('http://localhost/payment',{
+//         const response = await fetch('http://localhost:8000/payment',{
 //             method:"POST",
 //             headers:header,
 //             body: JSON.stringify(body)

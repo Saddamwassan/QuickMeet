@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.checkout-main{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+.checkout-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    background-color: #007BFF;
+    padding: 20px ;
+    border-radius:12px;
+}
+.checkout-div form{
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.checkout-div h2{
+   color: white;    
+   font-size:30px;
+   padding-bottom:5px;
+}
+.checkout-div hr{
+    width: 300px;
+    color: white;  
+    margin-bottom: 10px;  
+ }
+.checkout-div form .row{
+    display: flex;
+    flex-direction:row;
+}
+.checkout-btn{
+    display: flex;
+    justify-content: center;
+}
+.checkout-btn button{
+    background-color: white;
+    padding:10px;
+    border-radius: 10px;
+    border:none;
+}

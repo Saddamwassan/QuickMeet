@@ -3,8 +3,8 @@ import "./schedule.css"
 import Button from '../../components/buttons/Button'
 import Cancel from '../../components/buttons/cancel'
 import { createSchedules } from '../../Services/ScheduleService'
+import StripeCustomCheckout from './StripeCustomCheckout'
 import Swal from 'sweetalert2'
-import StripeCheckout from 'react-stripe-checkout';
 
 function ScheduleForm(){
   const initialValues = {
@@ -13,36 +13,7 @@ function ScheduleForm(){
     dateTime:''
   }
   const [scheduleData,setScheduleData] = useState(initialValues);
-  // for payment 
-  const [booking, setBooking] = useState({
-    name:"John Cena",
-    price:15,
-  });
-// for stripe payment
-const makePayment = async token =>{
-  try{
-      const body = {
-      token,
-      booking
-      }
-      const header = {
-          "Content-Type":"application/json"
-      }
-      const response = await fetch('http://localhost:8000/payment',{
-          method:"POST",
-          headers:header,
-          body: JSON.stringify(body)
-      })
-      if(response.ok){
-          console.log(response);
-          console.log(response.status);
-      }else{
-          console.log("Response Not Ok" + response);
-      }
-  }catch(err){
-      console.log(err)
-  }
-  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setScheduleData(prevData => ({
@@ -54,17 +25,17 @@ const makePayment = async token =>{
     e.preventDefault();
     try{
       const data = JSON.stringify(scheduleData);
-       await createSchedules(data)
-      .then(
-        alert,
-        setScheduleData(initialValues),
-          )
+      //  await createSchedules(data)
+      // .then(
+      //   alert,
+      //   setScheduleData(initialValues),
+      //     )
     }catch(err){
       console.log(err);
     }
   }
     // alert 
-    const alert = ()=>{
+    const alert = ()=>{ 
       Swal.fire({
         position: "center",
         icon: "success",
@@ -95,10 +66,13 @@ const makePayment = async token =>{
     </div>
     <div className="buttons">
     <Cancel value="Cancel" className="cancel" />
+    {/* <StripeCheckout stripeKey="pk_test_51PdQ0RJBsmxDcpsk1350mz6wspXS6WizhQCy9GHyFhPgtUK6DtObzTHBHhtUHAvX2orxd0sPp36iGNMIx9dLvGgK005lrF03qS" name='Buy Meeting' token={makePayment} amount={booking.price * 100}>
+    </StripeCheckout> */}
     <Button name="Book Event" className="Add_booking"  type="submit"/>
     </div>
     </form>
   </div>
+  <StripeCustomCheckout />
   </div>
   </>
   )
