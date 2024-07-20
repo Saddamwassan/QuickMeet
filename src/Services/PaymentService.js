@@ -1,12 +1,16 @@
-export const sendPaymentToStripe = async (data) =>{
+export const sendPaymentToStripe = async (data,booking) =>{
     try{
+        const body = {
+            data,
+            booking
+        }
         const header = {
             "Content-Type":"application/json"
         }
         const response = await fetch('http://localhost:8000/payment',{
             method:"POST",
             headers:header,
-            body: JSON.stringify(data)
+            body: JSON.stringify(body)
         })
         if(response.ok){
             console.log(response);
